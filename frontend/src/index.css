@@ -1,0 +1,253 @@
+@import 'tailwindcss';
+@import 'tw-animate-css';
+@import 'shadcn/tailwind.css';
+@import '@fontsource-variable/geist';
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --font-heading: var(--font-sans);
+  --font-sans: 'Geist Variable', sans-serif;
+
+  /* Identidade: azul-água + ciano. */
+  --color-brand: var(--brand);
+  --color-brand-foreground: var(--brand-foreground);
+  --color-brand-muted: var(--brand-muted);
+  --color-aqua: var(--aqua);
+
+  /* Superfície escura do header/topo — constante nos dois temas. */
+  --color-shell: var(--shell);
+  --color-shell-foreground: var(--shell-foreground);
+  --color-shell-muted: var(--shell-muted);
+  --color-shell-border: var(--shell-border);
+
+  /* Prioridade do pedido: um par (sólido / suave) para cada nível. */
+  --color-urgente: var(--urgente);
+  --color-urgente-soft: var(--urgente-soft);
+  --color-urgente-soft-foreground: var(--urgente-soft-foreground);
+  --color-vip: var(--vip);
+  --color-vip-soft: var(--vip-soft);
+  --color-vip-soft-foreground: var(--vip-soft-foreground);
+  --color-normal: var(--normal);
+  --color-normal-soft: var(--normal-soft);
+  --color-normal-soft-foreground: var(--normal-soft-foreground);
+
+  --color-success: var(--success);
+  --color-success-soft: var(--success-soft);
+  --color-success-soft-foreground: var(--success-soft-foreground);
+
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --color-foreground: var(--foreground);
+  --color-background: var(--background);
+
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+  --radius-3xl: calc(var(--radius) * 2.2);
+  --radius-4xl: calc(var(--radius) * 2.6);
+
+  --animate-pulse-ring: pulse-ring 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+
+  @keyframes pulse-ring {
+    0%,
+    100% {
+      opacity: 1;
+      transform: scale(1);
+    }
+    50% {
+      opacity: 0.35;
+      transform: scale(1.35);
+    }
+  }
+}
+
+:root {
+  --radius: 0.75rem;
+
+  --background: oklch(0.982 0.006 240);
+  --foreground: oklch(0.24 0.035 255);
+
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.24 0.035 255);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.24 0.035 255);
+
+  /* Azul-água: herda o espírito do #0284c7, com mais profundidade. */
+  --primary: oklch(0.575 0.142 240);
+  --primary-foreground: oklch(0.99 0.005 240);
+
+  --secondary: oklch(0.958 0.011 243);
+  --secondary-foreground: oklch(0.32 0.04 253);
+  --muted: oklch(0.958 0.011 243);
+  --muted-foreground: oklch(0.53 0.03 252);
+  --accent: oklch(0.945 0.028 225);
+  --accent-foreground: oklch(0.33 0.07 245);
+
+  --destructive: oklch(0.585 0.216 27);
+  --border: oklch(0.912 0.014 245);
+  --input: oklch(0.912 0.014 245);
+  --ring: oklch(0.575 0.142 240);
+
+  --brand: oklch(0.575 0.142 240);
+  --brand-foreground: oklch(0.99 0.005 240);
+  --brand-muted: oklch(0.945 0.028 225);
+  --aqua: oklch(0.72 0.121 210);
+
+  /* Casca escura do app (header, tela de login). Igual nos dois temas —
+     é a assinatura da marca. */
+  --shell: oklch(0.265 0.055 254);
+  --shell-foreground: oklch(0.97 0.01 235);
+  --shell-muted: oklch(0.72 0.035 240);
+  --shell-border: oklch(0.35 0.05 252);
+
+  --urgente: oklch(0.585 0.216 27);
+  --urgente-soft: oklch(0.945 0.04 25);
+  --urgente-soft-foreground: oklch(0.47 0.19 27);
+  --vip: oklch(0.685 0.16 62);
+  --vip-soft: oklch(0.955 0.05 85);
+  --vip-soft-foreground: oklch(0.48 0.13 62);
+  --normal: oklch(0.55 0.03 252);
+  --normal-soft: oklch(0.955 0.012 245);
+  --normal-soft-foreground: oklch(0.45 0.03 252);
+
+  --success: oklch(0.62 0.145 155);
+  --success-soft: oklch(0.945 0.045 160);
+  --success-soft-foreground: oklch(0.45 0.12 155);
+
+  --chart-1: oklch(0.575 0.142 240);
+  --chart-2: oklch(0.72 0.121 210);
+  --chart-3: oklch(0.685 0.16 62);
+  --chart-4: oklch(0.585 0.216 27);
+  --chart-5: oklch(0.62 0.145 155);
+
+  --sidebar: oklch(0.265 0.055 254);
+  --sidebar-foreground: oklch(0.97 0.01 235);
+  --sidebar-primary: oklch(0.575 0.142 240);
+  --sidebar-primary-foreground: oklch(0.99 0.005 240);
+  --sidebar-accent: oklch(0.35 0.05 252);
+  --sidebar-accent-foreground: oklch(0.97 0.01 235);
+  --sidebar-border: oklch(0.35 0.05 252);
+  --sidebar-ring: oklch(0.72 0.121 210);
+}
+
+.dark {
+  --background: oklch(0.185 0.028 254);
+  --foreground: oklch(0.965 0.01 240);
+
+  --card: oklch(0.232 0.032 254);
+  --card-foreground: oklch(0.965 0.01 240);
+  --popover: oklch(0.232 0.032 254);
+  --popover-foreground: oklch(0.965 0.01 240);
+
+  /* No escuro o azul precisa subir de luminosidade para manter contraste. */
+  --primary: oklch(0.685 0.132 233);
+  --primary-foreground: oklch(0.18 0.04 250);
+
+  --secondary: oklch(0.295 0.035 253);
+  --secondary-foreground: oklch(0.965 0.01 240);
+  --muted: oklch(0.285 0.032 253);
+  --muted-foreground: oklch(0.72 0.03 243);
+  --accent: oklch(0.32 0.045 245);
+  --accent-foreground: oklch(0.96 0.012 235);
+
+  --destructive: oklch(0.68 0.185 24);
+  --border: oklch(1 0 0 / 11%);
+  --input: oklch(1 0 0 / 15%);
+  --ring: oklch(0.685 0.132 233);
+
+  --brand: oklch(0.685 0.132 233);
+  --brand-foreground: oklch(0.18 0.04 250);
+  --brand-muted: oklch(0.32 0.045 245);
+  --aqua: oklch(0.78 0.115 205);
+
+  --shell: oklch(0.222 0.032 254);
+  --shell-foreground: oklch(0.965 0.01 240);
+  --shell-muted: oklch(0.7 0.03 243);
+  --shell-border: oklch(1 0 0 / 11%);
+
+  --urgente: oklch(0.68 0.185 24);
+  --urgente-soft: oklch(0.35 0.08 25);
+  --urgente-soft-foreground: oklch(0.85 0.11 30);
+  --vip: oklch(0.76 0.14 66);
+  --vip-soft: oklch(0.35 0.06 70);
+  --vip-soft-foreground: oklch(0.87 0.11 78);
+  --normal: oklch(0.66 0.03 248);
+  --normal-soft: oklch(0.3 0.03 250);
+  --normal-soft-foreground: oklch(0.82 0.02 245);
+
+  --success: oklch(0.7 0.14 158);
+  --success-soft: oklch(0.32 0.06 158);
+  --success-soft-foreground: oklch(0.85 0.12 160);
+
+  --chart-1: oklch(0.685 0.132 233);
+  --chart-2: oklch(0.78 0.115 205);
+  --chart-3: oklch(0.76 0.14 66);
+  --chart-4: oklch(0.68 0.185 24);
+  --chart-5: oklch(0.7 0.14 158);
+
+  --sidebar: oklch(0.222 0.032 254);
+  --sidebar-foreground: oklch(0.965 0.01 240);
+  --sidebar-primary: oklch(0.685 0.132 233);
+  --sidebar-primary-foreground: oklch(0.18 0.04 250);
+  --sidebar-accent: oklch(0.32 0.045 245);
+  --sidebar-accent-foreground: oklch(0.965 0.01 240);
+  --sidebar-border: oklch(1 0 0 / 11%);
+  --sidebar-ring: oklch(0.78 0.115 205);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+
+  html {
+    @apply font-sans antialiased;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    /* O app é operacional: sem bounce/scroll horizontal acidental. */
+    overscroll-behavior-y: none;
+  }
+
+  ::selection {
+    @apply bg-brand/20;
+  }
+
+  /* Números de painel (fila, contadores, valores) devem alinhar em coluna. */
+  .tabular {
+    font-variant-numeric: tabular-nums;
+    font-feature-settings: 'tnum';
+  }
+}
